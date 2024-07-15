@@ -2,7 +2,8 @@ import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 import mongoose from "mongoose";
-import cookieParserq from "cookie-parser";
+import cookieParser from "cookie-parser";
+import authRouters from "./routes/AuthRoute.js";
 
 dotenv.config();
 
@@ -19,6 +20,8 @@ app.use(
 );
 app.use(cookieParser());
 app.use(express.json());
+
+app.use("/api/auth", authRouters);
 
 const server = app.listen(PORT, () => {
   console.log(`Server is running on port http://localhost:${PORT}`);
